@@ -20,10 +20,36 @@
       </article>
     </section>
     <section class="card-section">
-
+      <article class="card-box">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </article>
     </section>
     <section class="barcode-section">
-
+      <article class="barcode-image">
+        <div class="barcode-box">
+          <div class="barcode"></div>
+          <div class="barcode"></div>
+          <div class="barcode"></div>
+          <div class="barcode"></div>
+          <div class="barcode"></div>
+          <div class="barcode"></div>
+          <div class="barcode"></div>
+        </div>
+      </article>
+      <div class="address-box">
+        <p class="address-text">
+          Busan,<br/>
+          Sasang-gu,<br/>
+          Sasang-ro, 100-1<br/>
+          <span class="map-link">->See the map</span>
+        </p>
+      </div>
     </section>
   </div>
 </template>
@@ -68,11 +94,11 @@ export default {
     width: 60%;
     height: 60%;
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
   }
   .keyword-list {
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     width: 50%;
   }
   .keyword-list .keyword {
@@ -88,5 +114,80 @@ export default {
   }
   .comment-box .comment {
     line-height: 3rem;
+  }
+
+  .card-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  .card-box {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 70%;
+    height: 50%;
+  }
+  .card {
+    background: #888;
+  }
+  .card:nth-child(3) {
+    grid-column: 4 / 5;
+  }
+  .card:nth-child(4) {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+  .card:nth-child(5) {
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+  }
+  .card:nth-child(6) {
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
+  }
+  .card:nth-child(7) {
+    grid-row: 2 / 3;
+    grid-column: 5 / 6;
+  }
+
+  .barcode-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  .barcode-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .barcode-box {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+    width: 30%;
+    height: 30%;
+  }
+  .barcode-box .barcode {
+    flex: 1 1 0;
+    background: #888;
+  }
+  .address-box {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+  }
+  .address-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 2rem;
+  }
+  .address-text .map-link {
+    color: #aaa;
   }
 </style>
