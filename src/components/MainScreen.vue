@@ -60,6 +60,35 @@ export default {
   props: {
     msg: String,
     seen: String
+  },
+  methods: {
+    loadImages : function(){
+      for(const images of this.imagesInfo){
+        for(let i = 1; i <= images.cnt; i++){
+          if(images.type === 'image'){
+            const image = new Image();
+            image.src = require(`@/assets/${images.type}/${images.prefix + i.toString().padStart(3, '0')}.jpg`);
+            image.onload = ()=>{
+              images.arr.push(image);
+            }
+          } else if(images.type === 'video'){
+            console.log('video');
+          }
+        }
+      }
+    }
+  },
+  data() {
+    return {
+      imagesInfo: [
+        { arr: [], type: 'video', prefix: 'main', cnt: 2 },
+        { arr: [], type: 'image', prefix: 'card', cnt: 7 },
+        { arr: [], type: 'image', prefix: 'barcode', cnt: 7 },
+      ]
+    }
+  },
+  mounted(){
+    this.loadImages();
   }
 }
 </script>
