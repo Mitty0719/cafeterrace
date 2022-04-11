@@ -69,19 +69,26 @@ export default {
             const image = new Image();
             image.src = require(`@/assets/${images.type}/${images.prefix + i.toString().padStart(3, '0')}.jpg`);
             image.onload = ()=>{
-              images.arr.push(image);
+              images.arr[i-1] = image;
             }
           } else if(images.type === 'video'){
-            console.log('video');
+            for(let j = 1; j <= images.maxImages[i-1]; j++){
+              const image = new Image();
+              image.src = require(`@/assets/${images.type}/${images.prefix + i.toString().padStart(3, '0')}/${j.toString().padStart(4, '0')}.jpg`);
+              image.onload = ()=>{
+                images.arr[i-1][j] = image;
+              }
+            }
           }
         }
       }
+      console.log(this.imagesInfo);
     }
   },
   data() {
     return {
       imagesInfo: [
-        { arr: [], type: 'video', prefix: 'main', cnt: 2 },
+        { arr: [[], []], type: 'video', prefix: 'main', cnt: 2, maxImages: [420, 316] },
         { arr: [], type: 'image', prefix: 'card', cnt: 7 },
         { arr: [], type: 'image', prefix: 'barcode', cnt: 7 },
       ]
