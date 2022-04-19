@@ -1,11 +1,11 @@
 <template>
   <div class="ground">
     <section class="main-section">
-      <div class="main-image">
-        <div class="main-text">
+      <canvas class="main-canvas">
+        <!-- <div class="main-text">
           CAFETERRACE
-        </div>
-      </div>
+        </div> -->
+      </canvas>
     </section>
     <section class="text-section">
       <article class="text-box">
@@ -62,40 +62,68 @@ export default {
     seen: String
   },
   methods: {
-    loadImages : function(){
+    loadImages: async function(){
+      const waitImage = function(image){
+        return new Promise((resolve) => {
+          image.onload = () => resolve(image);
+          image.onerror = () => {};
+        })
+      }
       for(const images of this.imagesInfo){
         for(let i = 1; i <= images.cnt; i++){
           if(images.type === 'image'){
             const image = new Image();
             image.src = require(`@/assets/${images.type}/${images.prefix + i.toString().padStart(3, '0')}.jpg`);
-            image.onload = ()=>{
-              images.arr[i-1] = image;
-            }
+            images.arr.push(await waitImage(image));
+            // image.onload = ()=>{
+            //   // images.arr[i-1] = image;
+            //   images.arr.push(image);
+            // }
           } else if(images.type === 'video'){
-            for(let j = 1; j <= images.maxImages[i-1]; j++){
+            for(let j = 1; j <= images.videoSequence[i-1]; j++){
               const image = new Image();
               image.src = require(`@/assets/${images.type}/${images.prefix + i.toString().padStart(3, '0')}/${j.toString().padStart(4, '0')}.jpg`);
-              image.onload = ()=>{
-                images.arr[i-1][j] = image;
-              }
+              images.arr[i-1].push(await waitImage(image));
+              // image.onload = ()=>{
+              //   // images.arr[i-1][j-1] = image;
+              //   images.arr[i-1].push(image);
+              // }
             }
           }
         }
       }
-      console.log(this.imagesInfo);
+    },
+    showVideo: function(){
+      const parjs = JSON.parse(JSON.stringify(this.imagesInfo));
+      console.log(parjs[0].arr);
+    },
+    resize: function(){
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    },
+    getData: function(){
+
     }
   },
   data() {
     return {
       imagesInfo: [
-        { arr: [[], []], type: 'video', prefix: 'main', cnt: 2, maxImages: [420, 316] },
+        { arr: [[], []], type: 'video', prefix: 'main', cnt: 2, videoSequence: [420, 316] },
         { arr: [], type: 'image', prefix: 'card', cnt: 7 },
         { arr: [], type: 'image', prefix: 'barcode', cnt: 7 },
-      ]
+      ],
+      currentVideoIndex: 0,
+      currentVideoSequence: 0,
     }
   },
-  mounted(){
-    this.loadImages();
+  async mounted(){
+    this.canvas = document.querySelector('.main-canvas');
+    this.ctx = this.canvas.getContext('2d');
+
+    await this.loadImages();
+    this.resize();
+
+    this.showVideo();
   }
 }
 </script>
@@ -106,7 +134,7 @@ export default {
     width: 100vw;
     height: 100vh;
   }
-  .main-image {
+  .main-canvas {
     display: flex;
     justify-content: center;
     align-items: center;
