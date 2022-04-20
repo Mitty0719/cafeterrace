@@ -7,18 +7,7 @@
         </div> -->
       </canvas>
     </section>
-    <section class="text-section">
-      <article class="text-box">
-        <ul class="keyword-list">
-          <li class="keyword"><h5>SIMPLE</h5></li>
-          <li class="keyword"><h5>SWEETY</h5></li>
-          <li class="keyword"><h5>EMOTION</h5></li>
-        </ul>
-        <div class="comment-box">
-          <p class="comment">this is sample text. I don't know what do you want.  so I prepare everything. this is sample text. I don't know what do you want.  so I prepare everything.this is sample text. I don't know what do you want.  so I prepare everything.this is sample text. I don't know what do you want.  so I prepare everything.this is sample text. I don't know what do you want.  so I prepare everything.</p>
-        </div>
-      </article>
-    </section>
+    <text-section></text-section>
     <section class="card-section">
       <article class="card-box">
         <div class="card"></div>
@@ -55,7 +44,9 @@
 </template>
 
 <script>
+import TextSection from './main/TextSection.vue';
 export default {
+  components: { TextSection },
   name: 'MainScreen',
   props: {
     msg: String,
@@ -108,10 +99,8 @@ export default {
       this.stageHeight = window.innerHeight;
       this.canvas.width = this.stageWidth;
       this.canvas.height = this.stageHeight;
-    },
-    getData: function(){
-
     }
+    
   },
   data() {
     return {
@@ -155,38 +144,6 @@ export default {
     color: #fff;
   }
 
-  .text-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
-  .text-box {
-    width: 60%;
-    height: 60%;
-    display: flex;
-    flex-flow: row nowrap;
-  }
-  .keyword-list {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 50%;
-  }
-  .keyword-list .keyword {
-    display: flex;
-    align-items: center;
-    flex: 1 1 0;
-    font-size: 3rem;
-  }
-  .comment-box {
-    display: flex;
-    align-items: center;
-    width: 50%;
-  }
-  .comment-box .comment {
-    line-height: 3rem;
-  }
 
   .card-section {
     display: flex;
