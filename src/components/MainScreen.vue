@@ -94,12 +94,20 @@ export default {
       }
     },
     showVideo: function(){
-      const parjs = JSON.parse(JSON.stringify(this.imagesInfo));
-      console.log(parjs[0].arr);
+      if(this.currentVideoSequence >= this.imagesInfo[0].videoSequence[this.currentVideoIndex]){
+        this.currentVideoIndex = this.currentVideoIndex === 0 ? 1 : 0;
+        this.currentVideoSequence = 0;
+      }
+      const image = this.imagesInfo[0].arr[this.currentVideoIndex][this.currentVideoSequence];
+      this.ctx.drawImage(image, 0, 0, this.stageWidth, this.stageHeight);
+      this.currentVideoSequence++;
+      requestAnimationFrame(this.showVideo);
     },
     resize: function(){
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
+      this.stageWidth = window.innerWidth;
+      this.stageHeight = window.innerHeight;
+      this.canvas.width = this.stageWidth;
+      this.canvas.height = this.stageHeight;
     },
     getData: function(){
 
