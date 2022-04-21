@@ -6,10 +6,13 @@
           <li class="keyword" @mouseover="setShowComment(2)" @mouseleave="setShowComment(0)"><h5>{{keywordData[1].keyword}}</h5></li>
           <li class="keyword" @mouseover="setShowComment(3)" @mouseleave="setShowComment(0)"><h5>{{keywordData[2].keyword}}</h5></li>
         </ul>
+        <div class="vertical-line" v-if="showComment > 0"></div>
         <div class="comment-box">
-          <p class="comment" v-if="showComment === 1">{{keywordData[0].comment}}</p>
-          <p class="comment" v-if="showComment === 2">{{keywordData[1].comment}}</p>
-          <p class="comment" v-if="showComment === 3">{{keywordData[2].comment}}</p>
+          <transition name="fade">
+            <p class="comment" v-if="showComment === 1">{{keywordData[0].comment}}</p>
+            <p class="comment" v-else-if="showComment === 2">{{keywordData[1].comment}}</p>
+            <p class="comment" v-else-if="showComment === 3">{{keywordData[2].comment}}</p>
+          </transition>
         </div>
       </article>
     </section>
@@ -36,6 +39,12 @@ export default {
 }
 </script>
 <style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
   .text-section {
     display: flex;
     justify-content: center;
@@ -63,9 +72,16 @@ export default {
   .comment-box {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 50%;
   }
   .comment-box .comment {
     line-height: 3rem;
+  }
+
+  .vertical-line {
+    width: 5px;
+    height: 100%;
+    background: #000;
   }
 </style>
