@@ -1,11 +1,10 @@
 <template>
   <div class="ground">
     <section class="main-section">
-      <canvas class="main-canvas">
-        <!-- <div class="main-text">
-          CAFETERRACE
-        </div> -->
-      </canvas>
+      <canvas class="main-canvas"></canvas>
+      <div class="main-text">
+        CAFETERRACE
+      </div>
     </section>
     <text-section></text-section>
     <card-section v-bind:images="imagesInfo[1].arr"></card-section>
@@ -101,6 +100,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .main-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
   }
@@ -113,6 +116,7 @@ export default {
     background-color: green;
   }
   .main-text {
+    position: absolute;
     font-size: 2rem;
     color: #fff;
   }

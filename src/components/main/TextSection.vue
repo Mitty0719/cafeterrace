@@ -61,7 +61,7 @@ export default {
     height: 100vh;
   }
   .text-box {
-    width: 60%;
+    width: 70%;
     height: 60%;
     display: flex;
     flex-flow: row nowrap;
@@ -74,6 +74,7 @@ export default {
   .keyword-list .keyword {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex: 1 1 0;
     font-size: 3rem;
   }
