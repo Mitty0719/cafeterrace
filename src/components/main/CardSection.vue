@@ -1,5 +1,5 @@
 <template>
-    <section class="card-section">
+    <section class="card-section sub-section">
       <article class="card-box">
         <card-item v-for="(image, index) in images" :key="image.src" v-bind:image="image.src" v-bind:index="index"></card-item>
       </article>

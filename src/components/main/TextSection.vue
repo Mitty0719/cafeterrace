@@ -1,5 +1,5 @@
 <template>
-    <section class="text-section">
+    <section class="text-section sub-section">
       <article class="text-box">
         <ul class="keyword-list">
           <li class="keyword" @mouseover="setCommentSequence(1)" @mouseleave="setCommentSequence(0)"><h5>{{keywordData[0].keyword}}</h5></li>

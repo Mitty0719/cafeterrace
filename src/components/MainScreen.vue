@@ -117,8 +117,8 @@ export default {
     color: #fff;
   }
 
-
-  
-
+  .sub-section {
+    margin: 30vw 0 0 0;
+  }
   
 </style>

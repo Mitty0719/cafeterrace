@@ -1,5 +1,5 @@
 <template>
-  <section class="barcode-section">
+  <section class="barcode-section sub-section">
       <article class="barcode-image">
         <div class="barcode-box">
           <barcode-item v-for="(image, index) in images" :key="image.src" v-bind:image="image.src" v-bind:index="index"></barcode-item>
