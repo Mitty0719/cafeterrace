@@ -8,17 +8,7 @@
       </canvas>
     </section>
     <text-section></text-section>
-    <section class="card-section">
-      <article class="card-box">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-      </article>
-    </section>
+    <card-section v-bind:images="imagesInfo[1].arr"></card-section>
     <section class="barcode-section">
       <article class="barcode-image">
         <div class="barcode-box">
@@ -45,8 +35,12 @@
 
 <script>
 import TextSection from './main/TextSection.vue';
+import CardSection from './main/CardSection.vue';
 export default {
-  components: { TextSection },
+  components: {
+    TextSection,
+    CardSection
+  },
   name: 'MainScreen',
   props: {
     msg: String,
@@ -145,43 +139,7 @@ export default {
   }
 
 
-  .card-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
-  .card-box {
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    width: 70%;
-    height: 50%;
-  }
-  .card {
-    background: #888;
-  }
-  .card:nth-child(3) {
-    grid-column: 4 / 5;
-  }
-  .card:nth-child(4) {
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-  }
-  .card:nth-child(5) {
-    grid-row: 2 / 3;
-    grid-column: 3 / 4;
-  }
-  .card:nth-child(6) {
-    grid-row: 2 / 3;
-    grid-column: 4 / 5;
-  }
-  .card:nth-child(7) {
-    grid-row: 2 / 3;
-    grid-column: 5 / 6;
-  }
+  
 
   .barcode-section {
     position: relative;
