@@ -1,5 +1,5 @@
 <template>
-  <MainScreen msg="뷰 배우는 중" seen="true"/>
+  <MainScreen/>
 </template>
 
 <script>

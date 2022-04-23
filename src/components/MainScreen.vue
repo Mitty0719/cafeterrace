@@ -9,43 +9,22 @@
     </section>
     <text-section></text-section>
     <card-section v-bind:images="imagesInfo[1].arr"></card-section>
-    <section class="barcode-section">
-      <article class="barcode-image">
-        <div class="barcode-box">
-          <div class="barcode"></div>
-          <div class="barcode"></div>
-          <div class="barcode"></div>
-          <div class="barcode"></div>
-          <div class="barcode"></div>
-          <div class="barcode"></div>
-          <div class="barcode"></div>
-        </div>
-      </article>
-      <div class="address-box">
-        <p class="address-text">
-          Busan,<br/>
-          Sasang-gu,<br/>
-          Sasang-ro, 100-1<br/>
-          <span class="map-link">->See the map</span>
-        </p>
-      </div>
-    </section>
+    <barcode-section v-bind:images="imagesInfo[2].arr"></barcode-section>
   </div>
 </template>
 
 <script>
 import TextSection from './main/TextSection.vue';
 import CardSection from './main/CardSection.vue';
+import BarcodeSection from './main/BarcodeSection.vue';
 export default {
   components: {
     TextSection,
-    CardSection
+    CardSection,
+    BarcodeSection
   },
   name: 'MainScreen',
-  props: {
-    msg: String,
-    seen: String
-  },
+  props: {},
   methods: {
     loadImages: async function(){
       const waitImage = function(image){
@@ -141,40 +120,5 @@ export default {
 
   
 
-  .barcode-section {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-  }
-  .barcode-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  .barcode-box {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 20px;
-    width: 30%;
-    height: 30%;
-  }
-  .barcode-box .barcode {
-    flex: 1 1 0;
-    background: #888;
-  }
-  .address-box {
-    position: absolute;
-    right: 5%;
-    bottom: 5%;
-  }
-  .address-text {
-    font-size: 1.5rem;
-    font-weight: 900;
-    line-height: 2rem;
-  }
-  .address-text .map-link {
-    color: #aaa;
-  }
+  
 </style>
