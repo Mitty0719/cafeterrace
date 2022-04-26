@@ -1,14 +1,15 @@
 <template>
-  <MainScreen/>
+  <router-view></router-view>
+  <!-- <MainScreen/> -->
 </template>
 
 <script>
-import MainScreen from './components/MainScreen.vue'
+// import MainScreen from './components/MainScreen.vue';
 
 export default {
   name: 'App',
   components: {
-    MainScreen
+    // MainScreen
   }
 }
 </script>
