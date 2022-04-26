@@ -1,16 +1,13 @@
 <template>
+  <router-link to="/">홈으로</router-link>
+  <router-link to="/menu">메뉴로</router-link>
   <router-view></router-view>
-  <!-- <MainScreen/> -->
 </template>
 
 <script>
-// import MainScreen from './components/MainScreen.vue';
-
 export default {
   name: 'App',
-  components: {
-    // MainScreen
-  }
+  components: {}
 }
 </script>
 

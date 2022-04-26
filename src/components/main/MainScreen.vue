@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import TextSection from './main/TextSection.vue';
-import CardSection from './main/CardSection.vue';
-import BarcodeSection from './main/BarcodeSection.vue';
+import TextSection from './TextSection.vue';
+import CardSection from './CardSection.vue';
+import BarcodeSection from './BarcodeSection.vue';
 export default {
   components: {
     TextSection,
