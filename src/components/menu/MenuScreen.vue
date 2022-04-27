@@ -1,10 +1,12 @@
 <template>
-  <div>
-    메뉴입니다.
-  </div>
+  <menu-section></menu-section>
+  <item-section></item-section>
 </template>
 <script>
+import MenuSection from './MenuSection.vue';
+import ItemSection from './ItemSection.vue';
 export default {
+  components: { MenuSection, ItemSection },
   name: "MenuScreen",
   props: {
 
