@@ -3,19 +3,16 @@
     <article class="item-list-box">
       <h5 class="item-list-text">CHECK WHAT YOU ORDER!</h5>
       <ul class="item-list">
-        <li>
-          MENU1
-        </li>
-        <li>
-          MENU2
-        </li>
+        <item></item>
       </ul>
     </article>
   </section>
 </template>
 
 <script>
+import item from './Item.vue'
 export default {
+  components: { item },
   name: "ItemSection",
   data: function(){
     return{}
