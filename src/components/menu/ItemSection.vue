@@ -4,6 +4,9 @@
       <h5 class="item-list-text">CHECK WHAT YOU ORDER!</h5>
       <ul class="item-list">
         <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
       </ul>
     </article>
   </section>
