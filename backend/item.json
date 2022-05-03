@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "아메리카노",
+    "description": "아라비카 원두의 맛이 일품인 아메리카노",
+    "hot": 1,
+    "cold": 1,
+    "kcal": 5,
+    "amount": 500,
+    "sugar": 0,
+    "protein": 0,
+    "fat": 0,
+    "coffeine": 75
+  },
+  {
+    "id": 2,
+    "name": "아메리카노2",
+    "description": "아라비카 원두의 맛이 일품인 아메리카노22",
+    "hot": 1,
+    "cold": 1,
+    "kcal": 5,
+    "amount": 500,
+    "sugar": 0,
+    "protein": 0,
+    "fat": 0,
+    "coffeine": 75
+  },
+  {
+    "id": 3,
+    "name": "아메리카노3",
+    "description": "아라비카 원두의 맛이 일품인 아메리카노33",
+    "hot": 1,
+    "cold": 1,
+    "kcal": 5,
+    "amount": 500,
+    "sugar": 0,
+    "protein": 0,
+    "fat": 0,
+    "coffeine": 75
+  }
+]

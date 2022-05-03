@@ -3,10 +3,7 @@
     <article class="item-list-box">
       <h5 class="item-list-text">CHECK WHAT YOU ORDER!</h5>
       <ul class="item-list">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item v-for="item in items" :key="item.id" v-bind:item="item"></item>
       </ul>
     </article>
   </section>
@@ -18,7 +15,15 @@ export default {
   components: { item },
   name: "ItemSection",
   data: function(){
-    return{}
+    return{
+      items: []
+    }
+  },
+  mounted: function(){
+    this.axios.get('/api/item')
+      .then((res)=>{
+        this.items = res.data;
+      })
   }
 }
 </script>

@@ -2,10 +2,10 @@
   <li class="item">
     <div class="item-image"></div>
     <div class="item-text-box">
-      <h3 class="item-title">Americanno</h3>
-      <p class="item-exp">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, quis. Sint minima fugit blanditiis totam, iste esse. Enim, vitae provident eos omnis dignissimos minima accusantium deserunt!</p>
+      <h3 class="item-title">{{item.name}}</h3>
+      <p class="item-exp">{{item.description}}</p>
       <div class="item-nut-box">
-        <span class="item-kcal">5kcal</span> / <span class="item-amount">500ml</span>
+        <span class="item-kcal">{{item.kcal}}kcal</span> / <span class="item-amount">{{item.amount}}ml</span>
       </div>
     </div>
   </li>
@@ -13,7 +13,10 @@
 
 <script>
 export default {
-  name:"MenuItem"
+  name:"MenuItem",
+  props:{
+    item: Object
+  }
 }
 </script>
 
