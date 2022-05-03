@@ -2,10 +2,10 @@
   <li class="item">
     <div class="item-image"></div>
     <div class="item-text-box">
-      <h3 class="item-title">{{item.name}}</h3>
-      <p class="item-exp">{{item.description}}</p>
+      <h3 class="item-title">{{item.NAME}}</h3>
+      <p class="item-exp">{{item.BRIEF}}</p>
       <div class="item-nut-box">
-        <span class="item-kcal">{{item.kcal}}kcal</span> / <span class="item-amount">{{item.amount}}ml</span>
+        <span class="item-kcal">{{item.KCAL}}kcal</span> / <span class="item-amount">{{item.AMOUNT}}ml</span>
       </div>
     </div>
   </li>
@@ -16,6 +16,8 @@ export default {
   name:"MenuItem",
   props:{
     item: Object
+  },
+  mounted: function(){
   }
 }
 </script>

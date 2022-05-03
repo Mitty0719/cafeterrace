@@ -8,10 +8,6 @@ import ItemSection from './ItemSection.vue';
 export default {
   components: { MenuSection, ItemSection },
   name: "MenuScreen",
-  props: {
-
-  },
-  data: function(){}
 }
 </script>
 <style scoped>

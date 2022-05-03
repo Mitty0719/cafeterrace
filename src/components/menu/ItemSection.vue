@@ -3,7 +3,9 @@
     <article class="item-list-box">
       <h5 class="item-list-text">CHECK WHAT YOU ORDER!</h5>
       <ul class="item-list">
-        <item v-for="item in items" :key="item.id" v-bind:item="item"></item>
+        <router-link :to="{name: 'Item', params:{id: item.ID}}" v-for="item in items" :key="item.ID">
+          <item v-bind:item="item"></item>
+        </router-link>
       </ul>
     </article>
   </section>

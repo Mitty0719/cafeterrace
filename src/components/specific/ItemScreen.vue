@@ -5,24 +5,23 @@
       <div class="item-img"></div>
     </article>
     <article class="info-article">
-      <h3 class="title">AMERICANNO</h3>
+      <h3 class="title">{{this.item.NAME}}</h3>
       <div class="sub-info">
         <div class="temp-info">
           <div class="temp temp-cold"><div class="temp-icon"></div>COLD</div>
           <div class="temp temp-hot"><div class="temp-icon"></div>HOT</div>
         </div>
         <div class="amount-info">
-          <span class="kcal">25kcal</span> / <span class="amount">500ml</span>
+          <span class="kcal">{{this.item.KCAL}}</span>kcal / <span class="amount">{{this.item.AMOUNT}}</span>ml
         </div>
       </div>
       <ul class="nut-info">
-        <li>Sugars <span class="sugar">0g</span></li>
-        <li>Protein <span class="protein">0g</span></li>
-        <li>Saturated Fat <span class="fat">0g</span></li>
-        <li>Caffeine <span class="caffeine">75mg</span></li>
+        <li>Sugars <span class="sugar">{{this.item.SUGAR}}</span>g</li>
+        <li>Protein <span class="protein">{{this.item.PROTEIN}}</span>g</li>
+        <li>Saturated Fat <span class="fat">{{this.item.FAT}}</span>g</li>
+        <li>Caffeine <span class="caffeine">{{this.item.CAFFEINE}}</span>mg</li>
       </ul>
-      <p class="brief-info">What’s better than a great Americano coffee? Bitter and dark espresso is incredible, don’t get us wrong. But here’s the thing: it’s over so fast! Smooth it out with a Caffe Americano, espresso that’s tempered with a bit of hot water
-      </p>
+      <p class="brief-info">{{this.item.BRIEF}}</p>
     </article>
   </section>
   <hr>
@@ -46,9 +45,20 @@
 <script>
 export default {
   name: "ItemScreen",
-  props: {},
+  props: {
+    id: {type: Number, default: 0}
+  },
   data: function(){
-    return {}
+    return{
+      item: {}
+      };
+  },
+  mounted: function(){
+    this.axios.get(`./api/item/${this.id}`)
+    .then((res)=>{
+      this.item = res.data;
+      console.log(this.item);
+    })
   }
 }
 </script>
