@@ -3,7 +3,11 @@
     <div class="item-image"></div>
     <div class="item-text-box">
       <h3 class="item-title">{{item.NAME}}</h3>
+<<<<<<< HEAD
       <p class="item-exp">{{item.BRIEF}}</p>
+=======
+      <p class="item-exp">{{item.DESCRIPTION}}</p>
+>>>>>>> 7915519f4cc17534ba7fd0feef0259506b2ea636
       <div class="item-nut-box">
         <span class="item-kcal">{{item.KCAL}}kcal</span> / <span class="item-amount">{{item.AMOUNT}}ml</span>
       </div>
@@ -18,6 +22,10 @@ export default {
     item: Object
   },
   mounted: function(){
+<<<<<<< HEAD
+=======
+    console.log(this.item);
+>>>>>>> 7915519f4cc17534ba7fd0feef0259506b2ea636
   }
 }
 </script>
