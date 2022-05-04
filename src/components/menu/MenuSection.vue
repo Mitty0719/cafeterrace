@@ -1,11 +1,11 @@
 <template>
   <section class="menu-section">
     <ul class="menu-list">
-      <li class="menu-item">COFFEE</li>
-      <li class="menu-item">TEA</li>
-      <li class="menu-item">FRAPPE</li>
-      <li class="menu-item">ADE</li>
-      <li class="menu-item">DESSERT</li>
+      <li class="menu-item" @click="this.clickMenu(1)">COFFEE</li>
+      <li class="menu-item" @click="this.clickMenu(2)">TEA</li>
+      <li class="menu-item" @click="this.clickMenu(3)">FRAPPE</li>
+      <li class="menu-item" @click="this.clickMenu(4)">ADE</li>
+      <li class="menu-item" @click="this.clickMenu(5)">DESSERT</li>
     </ul>
   </section>
 </template>
@@ -13,8 +13,13 @@
 <script>
 export default {
   name: "MenuSection",
-  data: function(){
-    return{}
+  props: {
+    menuIndex: Number
+  },
+  methods: {
+    clickMenu: function(index){
+      this.$emit('input', index);
+    }
   }
 }
 </script>

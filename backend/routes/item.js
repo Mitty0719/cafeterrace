@@ -21,12 +21,9 @@ conn.connect(function(err){
 })
 
 
-router.get('/', function(req, res){
-<<<<<<< HEAD
-  conn.query('SELECT ID, NAME, BRIEF, KCAL, AMOUNT FROM ITEM_INFO', function(err, rows){
-=======
-  conn.query('SELECT NAME, DESCRIPTION, KCAL, AMOUNT FROM ITEM_INFO', function(err, rows){
->>>>>>> 7915519f4cc17534ba7fd0feef0259506b2ea636
+router.get('/:type', function(req, res){
+  const type = req.params.type;
+  conn.query(`SELECT ID, NAME, BRIEF, KCAL, AMOUNT FROM ITEM_INFO WHERE TYPE = '${type}'`, function(err, rows){
     if(err) throw err;
     res.send(rows);
   });
@@ -35,11 +32,7 @@ router.get('/', function(req, res){
 router.get('/:id', function(req, res){
   const id = parseInt(req.params.id, 10);
   
-<<<<<<< HEAD
-  conn.query(`SELECT ID, NAME, BRIEF, HOT, COLD, KCAL, AMOUNT, SUGAR, PROTEIN, FAT, COFFEINE FROM ITEM_INFO WHERE ID = '${id}'`, function(err, rows){
-=======
-  conn.query(`SELECT NAME, DESCRIPTION, HOT, COLD, KCAL, AMOUNT, SUGAR, PROTEIN, FAT, COFFEINE FROM ITEM_INFO WHERE ID = '${id}'`, function(err, rows){
->>>>>>> 7915519f4cc17534ba7fd0feef0259506b2ea636
+  conn.query(`SELECT ID, NAME, BRIEF, HOT, COLD, KCAL, AMOUNT, SUGAR, PROTEIN, FAT, CAFFEINE FROM ITEM_INFO WHERE ID = '${id}'`, function(err, rows){
     if(err) throw err;
     res.send(rows[0]);
   });

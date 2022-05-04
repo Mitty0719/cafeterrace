@@ -3,13 +3,8 @@
     <article class="item-list-box">
       <h5 class="item-list-text">CHECK WHAT YOU ORDER!</h5>
       <ul class="item-list">
-<<<<<<< HEAD
         <router-link :to="{name: 'Item', params:{id: item.ID}}" v-for="item in items" :key="item.ID">
           <item v-bind:item="item"></item>
-=======
-        <router-link to="/item" v-for="item in items" :key="item.id">
-          <item v-bind:id="item"></item>
->>>>>>> 7915519f4cc17534ba7fd0feef0259506b2ea636
         </router-link>
       </ul>
     </article>
@@ -21,17 +16,32 @@ import item from './Item.vue'
 export default {
   components: { item },
   name: "ItemSection",
+  props: {
+    menuIndex: Number
+  },
   data: function(){
     return{
       items: []
     }
   },
+  methods: {
+    getMenu: function(menuIndex){
+      let menuStr;
+      if(menuIndex === 1) menuStr = 'COFFEE';
+      else if(menuIndex === 2) menuStr = 'TEA';
+      else if(menuIndex === 3) menuStr = 'ADE';
+      else if(menuIndex === 4) menuStr = 'FRAPPE';
+      else if(menuIndex === 5) menuStr = 'DESSERT';
+
+      this.axios.get(`/api/item/${menuStr}`)
+        .then((res)=>{
+          this.items = res.data;
+        })
+      }
+  },
   mounted: function(){
-    this.axios.get('/api/item')
-      .then((res)=>{
-        this.items = res.data;
-      })
-  }
+    this.getMenu(this.menuIndex);
+  },
 }
 </script>
 
