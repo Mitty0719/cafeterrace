@@ -42,6 +42,9 @@ export default {
   mounted: function(){
     this.getMenu(this.menuIndex);
   },
+  watch: {
+    'menuIndex': 'getMenu'
+  }
 }
 </script>
 
