@@ -57,7 +57,6 @@ export default {
     this.axios.get(`./api/item/specific/${this.id}`)
     .then((res)=>{
       this.item = res.data;
-      console.log(this.item);
     })
   }
 }

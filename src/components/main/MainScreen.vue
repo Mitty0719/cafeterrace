@@ -117,7 +117,9 @@ export default {
   }
   .main-text {
     position: absolute;
-    font-size: 2rem;
+    font-size: 6rem;
+    font-weight: 900;
+    text-decoration: underline 12px solid #fff;
     color: #fff;
   }
 

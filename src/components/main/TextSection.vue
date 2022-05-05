@@ -61,10 +61,11 @@ export default {
     height: 100vh;
   }
   .text-box {
-    width: 70%;
-    height: 60%;
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
+    width: 70%;
+    height: 60%;
   }
   .keyword-list {
     display: flex;
@@ -77,6 +78,10 @@ export default {
     justify-content: center;
     flex: 1 1 0;
     font-size: 3rem;
+    font-weight: 900;
+  }
+  .keyword-list .keyword:hover {
+    color: #FFC700;
   }
   .comment-box {
     display: flex;
@@ -89,8 +94,12 @@ export default {
   }
 
   .vertical-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 5px;
     height: 100%;
     background: #000;
+    transform: translate(-50%, -50%);
   }
 </style>
