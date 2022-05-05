@@ -29,7 +29,7 @@ router.get('/:type', function(req, res){
   });
 });
 
-router.get('/:id', function(req, res){
+router.get('/specific/:id', function(req, res){
   const id = parseInt(req.params.id, 10);
   
   conn.query(`SELECT ID, NAME, BRIEF, HOT, COLD, KCAL, AMOUNT, SUGAR, PROTEIN, FAT, CAFFEINE FROM ITEM_INFO WHERE ID = '${id}'`, function(err, rows){

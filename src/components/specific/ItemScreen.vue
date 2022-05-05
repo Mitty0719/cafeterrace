@@ -54,7 +54,7 @@ export default {
       };
   },
   mounted: function(){
-    this.axios.get(`./api/item/${this.id}`)
+    this.axios.get(`./api/item/specific/${this.id}`)
     .then((res)=>{
       this.item = res.data;
       console.log(this.item);
