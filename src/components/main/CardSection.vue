@@ -1,7 +1,7 @@
 <template>
     <section class="card-section sub-section">
       <article class="card-box">
-        <card-item v-for="(image, index) in images" :key="image.src" v-bind:image="image.src" v-bind:index="index"></card-item>
+        <card-item v-for="(image, index) in images" :key="image.src" v-bind:image="image.src" v-bind:index="index" v-bind:text="cardText[index]"></card-item>
       </article>
     </section>
 </template>
@@ -15,6 +15,7 @@ export default {
   },
   data: function(){
     return{
+      cardText: ['아라비카 원두', '풍부한 맛', '환경 패키지', '달콤한 디저트', '최상급 설비', '친절한 직원', '넓은 공간']
     }
   }
 }

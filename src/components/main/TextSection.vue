@@ -79,6 +79,7 @@ export default {
     flex: 1 1 0;
     font-size: 3rem;
     font-weight: 900;
+    transition-duration: .5s;
   }
   .keyword-list .keyword:hover {
     color: #FFC700;
