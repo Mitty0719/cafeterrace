@@ -23,7 +23,27 @@ export default {
     BarcodeSection
   },
   name: 'MainScreen',
-  props: {},
+  data() {
+    return {
+      imagesInfo: [
+        { arr: [[], []], type: 'video', prefix: 'main', cnt: 2, videoSequence: [420, 316] },
+        { arr: [], type: 'image', prefix: 'card', cnt: 7 },
+        { arr: [], type: 'image', prefix: 'barcode', cnt: 7 },
+      ],
+      currentVideoIndex: 0,
+      currentVideoSequence: 0,
+      stageWidth: 0,
+      stageHeight: 0,
+      maxSection: 3,
+      currentSection: 0,
+      sectionScroll: 0,
+      currentScroll: 0,
+      isScroll: false,
+      scrollTime: 2000,
+      scrollSpeed: 0.072,
+      scrollReqId: 0,
+    }
+  },
   methods: {
     loadImages: async function(){
       const waitImage = function(image){
@@ -62,7 +82,7 @@ export default {
         this.currentVideoSequence = 0;
       }
       const image = this.imagesInfo[0].arr[this.currentVideoIndex][this.currentVideoSequence];
-      this.ctx.drawImage(image, 0, 0, this.stageWidth, this.stageHeight);
+      this.ctx.drawImage(image, 0, 0); // , this.stageWidth, this.stageHeight
       this.currentVideoSequence++;
       requestAnimationFrame(this.showVideo);
     },
@@ -71,19 +91,37 @@ export default {
       this.stageHeight = window.innerHeight;
       this.canvas.width = this.stageWidth;
       this.canvas.height = this.stageHeight;
+    },
+    setScroll: function(e){
+      if(!this.isScroll){
+        this.isScroll = true;
+        const dy = e.deltaY;
+        const minScroll = 20;
+        if(dy > minScroll){
+          if(this.currentSection < this.maxSection){
+            this.currentSection++;
+            this.setScreenTop();
+          }
+        }else if(dy < -minScroll){
+          if(this.currentSection > 0){
+            this.currentSection--;
+            this.setScreenTop();
+          }
+        }
+        this.sectionScroll = this.currentSection * this.stageHeight;
+        setTimeout(() => {
+          this.isScroll = false;
+          cancelAnimationFrame(this.scrollReqId);
+          }, this.scrollTime);
+        }
+    },
+    setScreenTop: function(){
+      this.scrollReqId = requestAnimationFrame(this.setScreenTop.bind(this));
+      const gap = (this.sectionScroll - this.currentScroll) * this.scrollSpeed;
+      window.scrollTo(0, this.currentScroll + gap);
+      this.currentScroll = window.scrollY;
     }
     
-  },
-  data() {
-    return {
-      imagesInfo: [
-        { arr: [[], []], type: 'video', prefix: 'main', cnt: 2, videoSequence: [420, 316] },
-        { arr: [], type: 'image', prefix: 'card', cnt: 7 },
-        { arr: [], type: 'image', prefix: 'barcode', cnt: 7 },
-      ],
-      currentVideoIndex: 0,
-      currentVideoSequence: 0,
-    }
   },
   async mounted(){
     this.canvas = document.querySelector('.main-canvas');
@@ -91,8 +129,10 @@ export default {
 
     await this.loadImages();
     this.resize();
-
     this.showVideo();
+    window.addEventListener('resize', this.resize.bind(this));
+    window.addEventListener('wheel', (e) => {e.preventDefault();}, {passive: false});
+    window.addEventListener('wheel', this.setScroll.bind(this));
   }
 }
 </script>
@@ -111,8 +151,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
     background-color: green;
   }
   .main-text {
@@ -124,7 +162,7 @@ export default {
   }
 
   .sub-section {
-    margin: 30vw 0 0 0;
+    margin: 0 0 0 0;
   }
   
 </style>
