@@ -40,7 +40,7 @@ export default {
       currentScroll: 0,
       isScroll: false,
       scrollTime: 2000,
-      scrollSpeed: 0.072,
+      scrollSpeed: 0.062,
       scrollReqId: 0,
     }
   },
@@ -96,7 +96,7 @@ export default {
       if(!this.isScroll){
         this.isScroll = true;
         const dy = e.deltaY;
-        const minScroll = 20;
+        const minScroll = 10;
         if(dy > minScroll){
           if(this.currentSection < this.maxSection){
             this.currentSection++;
@@ -124,6 +124,7 @@ export default {
     
   },
   async mounted(){
+    const ground = document.querySelector('.ground');
     this.canvas = document.querySelector('.main-canvas');
     this.ctx = this.canvas.getContext('2d');
 
@@ -131,8 +132,8 @@ export default {
     this.resize();
     this.showVideo();
     window.addEventListener('resize', this.resize.bind(this));
-    window.addEventListener('wheel', (e) => {e.preventDefault();}, {passive: false});
-    window.addEventListener('wheel', this.setScroll.bind(this));
+    ground.addEventListener('wheel', (e) => {e.preventDefault();}, {passive: false});
+    ground.addEventListener('wheel', this.setScroll.bind(this));
   }
 }
 </script>
