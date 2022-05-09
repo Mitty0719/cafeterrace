@@ -31,11 +31,11 @@
   <hr>
   <section class="rat-section">
     <div class="rat-box">
-      <span class="rat-text like-text">I LOVE IT!</span>
-      <div class="rat-icon like-icon"></div>
+      <span class="rat-text like-text" @click="clickLike">I LOVE IT!</span>
+      <div class="rat-icon like-icon">{{like}}</div>
     </div>
     <div class="rat-box">
-      <div class="rat-icon dislike-icon"></div>
+      <div class="rat-icon dislike-icon" @click="clickDislike">{{dislike}}</div>
       <span class="rat-text dislike-text">I HATE IT!</span>
     </div>
   </section>
@@ -50,14 +50,35 @@ export default {
   },
   data: function(){
     return{
-      item: {}
-      };
+      item: {},
+      like: 0,
+      dislike: 0,
+    };
   },
   mounted: function(){
+    this.getItem();
+  },
+  methods: {
+    getItem: function(){
     this.axios.get(`./api/item/specific/${this.id}`)
     .then((res)=>{
       this.item = res.data;
+      this.like = this.item.ITEMLIKE;
+      this.dislike = this.item.ITEMDISLIKE;
     })
+    },
+    clickLike: function(){
+      this.axios.put(`./api/item/specific/${this.id}/like`)
+      .then(()=>{
+        this.like++;
+      })
+    },
+    clickDislike: function(){
+      this.axios.put(`./api/item/specific/${this.id}/dislike`)
+      .then(()=>{
+        this.dislike++;
+      })
+    }
   }
 }
 </script>
@@ -159,11 +180,25 @@ hr{
   gap: 15px;
 }
 .rat-box .rat-text{
-  font-color: #333;
+  color: #333;
+  font-weight: 600;
 }
 .rat-box .rat-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2rem;
   height: 2rem;
-  background: #888;
+  background: #eee;
+  border: 0px solid #eee;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  color: #333;
+  transition-duration: 1s;
+  cursor: pointer;
+}
+.rat-box .rat-icon:hover{
+  border: 1px solid #333;
+  box-sizing: border-box;
 }
 </style>
