@@ -1,6 +1,6 @@
 <template>
   <li class="item">
-    <div class="item-image"></div>
+    <div class="item-image-con"></div>
     <div class="item-text-box">
       <h3 class="item-title">{{item.NAME}}</h3>
       <p class="item-exp">{{item.BRIEF}}</p>
@@ -15,9 +15,27 @@
 export default {
   name:"MenuItem",
   props:{
-    item: Object
+    item: Object,
+    index: Number
+  },
+  data: function(){
+    return {
+      
+    }
   },
   mounted: function(){
+    this.setImage();
+  },
+  methods: {
+    setImage: function(){
+      const item = document.querySelectorAll('.item-image-con')[this.index];
+      const image = new Image;
+      image.src = require(`@/assets/image/${this.item.IMAGEPATH}`);
+      image.classList.add('item-image');
+
+      item.innerHTML = '';
+      item.append(image);
+    }
   }
 }
 </script>
@@ -30,10 +48,19 @@ export default {
     padding: 2vw;
     gap: 30px;
   }
-  .item-image{
+  .item-image-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-shrink: 0;
     width: 150px;
-    background: red;
+    height: 100%;
+  }
+  .item-image{
+    height: 90%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   .item-text-box{
     display: flex;
