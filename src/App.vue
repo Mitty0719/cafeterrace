@@ -2,10 +2,10 @@
   <div class="quick-menu">
     <h3 class="quick-title">CAFETERRACE</h3>
     <ul class="quick-menu-list">
-      <router-link to="/">
+      <router-link to="/" @click.enter="this.setMenuIndex(1)">
         <li class="quick-menu-item menu-item-tohome">HOME</li>
       </router-link>
-      <router-link to="/menu">
+      <router-link to="/menu" @click.enter="this.setMenuIndex(2)">
         <li class="quick-menu-item menu-item-tomenu">MENU</li>
       </router-link>
     </ul>
@@ -24,7 +24,7 @@ export default {
       quickTitle: null,
       quickMenuToHome: null,
       quickMenuToMenu: null,
-      isTop: true
+      menuIndex: 1,
     }
   },
   methods: {
@@ -32,23 +32,27 @@ export default {
       this.stageHeight = window.innerHeight;
     },
     scrollLoop: function(){
-      if(window.scrollY > this.stageHeight){
-        if(this.isTop){
-          this.quickMenu.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-          this.quickMenuToHome.style.color = '#fff';
-          this.quickMenuToMenu.style.color = '#fff';
-          this.quickTitle.style.opacity = 1;
-          this.isTop = false;
-        }
-      }else{
-        if(!this.isTop){
+      this.quickMenu.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+      // this.quickMenuToHome.style.color = '#fff';
+      // this.quickMenuToMenu.style.color = '#fff';
+      this.quickTitle.style.opacity = 1;
+
+      if(this.menuIndex === 1){
+        if(window.scrollY < this.stageHeight){
           this.quickMenu.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-          this.quickMenuToHome.style.color = '#fff';
-          this.quickMenuToMenu.style.color = '#fff';
+          // this.quickMenuToHome.style.color = '#fff';
+          // this.quickMenuToMenu.style.color = '#fff';
           this.quickTitle.style.opacity = 0;
-          this.isTop = true;
         }
       }
+    },
+    setMenuIndex: function(index){
+      this.menuIndex = index;
+
+      window.scrollTo(0, 1);
+      window.scrollTo(0, 0);
+
+      console.log(this.menuIndex);
     }
   },
   mounted: function(){
@@ -80,7 +84,7 @@ export default {
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 1);
   z-index: 100;
   transition-duration: 1s;
 }
