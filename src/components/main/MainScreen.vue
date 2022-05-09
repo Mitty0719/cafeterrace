@@ -124,7 +124,7 @@ export default {
     
   },
   async mounted(){
-    const ground = document.querySelector('.ground');
+    // const ground = document.querySelector('.ground');
     this.canvas = document.querySelector('.main-canvas');
     this.ctx = this.canvas.getContext('2d');
 
@@ -132,8 +132,8 @@ export default {
     this.resize();
     this.showVideo();
     window.addEventListener('resize', this.resize.bind(this));
-    ground.addEventListener('wheel', (e) => {e.preventDefault();}, {passive: false});
-    ground.addEventListener('wheel', this.setScroll.bind(this));
+    // ground.addEventListener('wheel', (e) => {e.preventDefault();}, {passive: false});
+    // ground.addEventListener('wheel', this.setScroll.bind(this));
   }
 }
 </script>
@@ -145,7 +145,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
   }
   .main-canvas {

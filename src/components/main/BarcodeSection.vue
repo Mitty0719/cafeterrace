@@ -31,7 +31,7 @@ export default {
 <style scoped>
   .barcode-section {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
   }
   .barcode-image {
