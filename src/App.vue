@@ -1,5 +1,6 @@
 <template>
   <div class="quick-menu">
+    <h3 class="quick-title">CAFETERRACE</h3>
     <ul class="quick-menu-list">
       <router-link to="/">
         <li class="quick-menu-item menu-item-tohome">HOME</li>
@@ -20,6 +21,7 @@ export default {
     return {
       stageHeight: window.innerHeight,
       quickMenu: null,
+      quickTitle: null,
       quickMenuToHome: null,
       quickMenuToMenu: null,
       isTop: true
@@ -35,6 +37,7 @@ export default {
           this.quickMenu.style.backgroundColor = 'rgba(0, 0, 0, 1)';
           this.quickMenuToHome.style.color = '#fff';
           this.quickMenuToMenu.style.color = '#fff';
+          this.quickTitle.style.opacity = 1;
           this.isTop = false;
         }
       }else{
@@ -42,13 +45,15 @@ export default {
           this.quickMenu.style.backgroundColor = 'rgba(255, 255, 255, 0)';
           this.quickMenuToHome.style.color = '#fff';
           this.quickMenuToMenu.style.color = '#fff';
+          this.quickTitle.style.opacity = 0;
           this.isTop = true;
         }
       }
     }
   },
   mounted: function(){
-    this.quickMenu = document.querySelector('.quick-menu')
+    this.quickMenu = document.querySelector('.quick-menu');
+    this.quickTitle = document.querySelector('.quick-title');
     this.quickMenuToHome = document.querySelector('.menu-item-tohome');
     this.quickMenuToMenu = document.querySelector('.menu-item-tomenu');
 
@@ -69,6 +74,8 @@ export default {
 }
 .quick-menu {
   position: fixed;
+  display: flex;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -77,11 +84,19 @@ export default {
   z-index: 100;
   transition-duration: 1s;
 }
+.quick-title {
+  position: absolute;
+  left: 5%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: underline;
+  color: #fff;
+  opacity: 0;
+  transition-duration: 1s;
+}
 .quick-menu-list {
   position: absolute;
-  top: 50%;
   right: 5%;
-  transform: translateY(-50%);
 }
 .quick-menu-item {
   float: left;
