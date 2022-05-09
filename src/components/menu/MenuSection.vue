@@ -19,6 +19,11 @@ export default {
   methods: {
     clickMenu: function(index){
       this.$emit('input', index);
+      const menuItems = document.querySelectorAll('.menu-item');
+      for(const menuItem of menuItems){
+        menuItem.classList.remove('clicked');
+      }
+      menuItems[index-1].classList.add('clicked');
     }
   }
 }
@@ -31,12 +36,23 @@ export default {
     align-items: flex-end;
     width: 100%;
     height: 30vw;
+    background-color: #eee;
   }
   .menu-list{
     display: flex;
     gap: 20px;
   }
-  .menu-list .menu-item {
+  .menu-item{
     margin: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition-duration: 1s;
+  }
+  .menu-item:hover{
+    transform: scale(1.2);
+  }
+  .menu-item.clicked{
+    text-decoration: underline;
   }
 </style>

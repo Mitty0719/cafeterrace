@@ -29,8 +29,8 @@ export default {
       let menuStr;
       if(menuIndex === 1) menuStr = 'COFFEE';
       else if(menuIndex === 2) menuStr = 'TEA';
-      else if(menuIndex === 3) menuStr = 'ADE';
-      else if(menuIndex === 4) menuStr = 'FRAPPE';
+      else if(menuIndex === 3) menuStr = 'FRAPPE';
+      else if(menuIndex === 4) menuStr = 'ADE';
       else if(menuIndex === 5) menuStr = 'DESSERT';
 
       this.axios.get(`/api/item/${menuStr}`)
