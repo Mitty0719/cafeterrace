@@ -26,7 +26,6 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
   }
   .card-box {
     display: grid;
@@ -35,5 +34,17 @@ export default {
     gap: 20px;
     width: 70%;
     height: 50%;
+  }
+  @media screen and (max-width:980px) {
+    .card-box {
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width:720px) {
+    .card-box {
+      grid-template-rows: repeat(7, 1fr);
+      grid-template-columns: initial;
+    }
   }
 </style>

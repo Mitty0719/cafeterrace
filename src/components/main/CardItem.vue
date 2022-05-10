@@ -75,4 +75,11 @@ export default {
     opacity: 0;
     transition-duration: 1.7s;
   }
+  @media screen and (max-width:980px) {
+    .card {
+      height: 200px;
+      grid-row: initial !important;
+      grid-column: initial !important;
+    }
+  }
 </style>

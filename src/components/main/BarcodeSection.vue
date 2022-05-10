@@ -10,7 +10,7 @@
           Busan,<br/>
           Sasang-gu,<br/>
           Sasang-ro, 100-1<br/>
-          <span class="map-link">->See the map</span>
+          <a class="map-link" href="http://naver.me/FvWIQl7H" target="_blank">->See the map</a>
         </p>
       </div>
     </section>
@@ -61,5 +61,11 @@ export default {
   }
   .address-text .map-link {
     color: #aaa;
+  }
+  @media screen and (max-width:980px) {
+    .barcode-box {
+      width: 40%;
+      gap: 15px;
+    }
   }
 </style>

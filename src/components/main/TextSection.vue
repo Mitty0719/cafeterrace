@@ -103,4 +103,13 @@ export default {
     background: #000;
     transform: translate(-50%, -50%);
   }
+
+  @media screen and (max-width:980px) {
+    .text-box{
+      justify-content: center;
+    }
+    .comment-box, .vertical-line{
+      display: none;
+    }
+  }
 </style>

@@ -49,10 +49,8 @@ export default {
     setMenuIndex: function(index){
       this.menuIndex = index;
 
-      window.scrollTo(0, 1);
       window.scrollTo(0, 0);
-
-      console.log(this.menuIndex);
+      window.scrollTo(0, 0);
     }
   },
   mounted: function(){
@@ -63,6 +61,9 @@ export default {
 
     window.addEventListener('resize', this.resize);
     window.addEventListener('scroll', this.scrollLoop);
+
+    window.scrollTo(0, 3);
+    window.scrollTo(0, 0);
   }
 }
 </script>

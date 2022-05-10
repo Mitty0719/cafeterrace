@@ -166,4 +166,10 @@ export default {
     margin: 0 0 0 0;
   }
   
+  @media screen and (max-width:980px) {
+    .main-text {
+      font-size: 3rem;
+      text-decoration: underline 3px solid #fff;
+    }
+  }
 </style>
