@@ -82,4 +82,16 @@ export default {
   .item-nut-box p{
     float: left;
   }
+  @media screen and (max-width:980px) {
+    .item{
+      height: 140px;
+    }
+    .item-image-con{
+      width: 120px;
+      gap: 10px;
+    }
+    .item-image{
+      height: 60%;
+    }
+  }
 </style>

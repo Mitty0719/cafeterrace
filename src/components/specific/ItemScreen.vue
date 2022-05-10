@@ -218,4 +218,11 @@ hr{
   border: 1px solid #333;
   box-sizing: border-box;
 }
+@media screen and (max-width:720px) {
+  .info-section{
+    flex-flow: column nowrap;
+    height: 600px;
+  }
+
+}
 </style>

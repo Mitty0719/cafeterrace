@@ -55,4 +55,13 @@ export default {
   .menu-item.clicked{
     text-decoration: underline;
   }
+
+  @media screen and (max-width:980px) {
+    .menu-list{
+      gap: 10px;
+    }
+    .menu-item{
+      font-size: 1rem;
+    }
+  }
 </style>

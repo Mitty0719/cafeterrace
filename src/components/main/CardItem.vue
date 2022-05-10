@@ -30,6 +30,7 @@ export default {
 <style scoped>
   .card {
     position: relative;
+    height: 200px;
     border: 1px solid #000;
     box-shadow: 3px 3px 3px #ccc;
     background-size: cover cover;
@@ -77,7 +78,6 @@ export default {
   }
   @media screen and (max-width:980px) {
     .card {
-      height: 200px;
       grid-row: initial !important;
       grid-column: initial !important;
     }
