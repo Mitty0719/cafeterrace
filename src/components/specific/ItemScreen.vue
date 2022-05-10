@@ -1,8 +1,8 @@
 <template>
 <div class="specific-item-box">
   <section class="info-section">
-    <article class="img-article">
-      <div class="item-img"></div>
+    <article class="image-article">
+      <!-- <div class="item-img"></div> -->
     </article>
     <article class="info-article">
       <h3 class="title">{{this.item.NAME}}</h3>
@@ -27,16 +27,19 @@
   <hr>
   <section class="exp-section">
     <h3 class="exp-title">I WANT IT!</h3>
+    <p class="description">
+      {{this.item.DESCRIPTION}}
+    </p>
   </section>
   <hr>
   <section class="rat-section">
     <div class="rat-box">
-      <span class="rat-text like-text" @click="clickLike">I LOVE IT!</span>
-      <div class="rat-icon like-icon">{{like}}</div>
+      <span class="rat-text like-text">I LOVE IT!</span>
+      <div class="rat-icon like-icon" @click="clickLike">{{like}}</div>
     </div>
     <div class="rat-box">
-      <div class="rat-icon dislike-icon" @click="clickDislike">{{dislike}}</div>
-      <span class="rat-text dislike-text">I HATE IT!</span>
+      <div class="rat-icon dislike-icon">{{dislike}}</div>
+      <span class="rat-text dislike-text" @click="clickDislike">I HATE IT!</span>
     </div>
   </section>
 </div>
@@ -65,6 +68,7 @@ export default {
       this.item = res.data;
       this.like = this.item.ITEMLIKE;
       this.dislike = this.item.ITEMDISLIKE;
+      this.setImage();
     })
     },
     clickLike: function(){
@@ -78,6 +82,15 @@ export default {
       .then(()=>{
         this.dislike++;
       })
+    },
+    setImage: function(){
+      const item = document.querySelector('.image-article');
+      const image = new Image;
+      image.src = require(`@/assets/image/${this.item.IMAGEPATH}`);
+      image.classList.add('item-image');
+
+      item.innerHTML = '';
+      item.append(image);
     }
   }
 }
@@ -98,13 +111,15 @@ hr{
   height: 400px;
   margin: 10vw 0;
 }
-.img-article{
+.image-article{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1 1 0;
+  border: 1px solid black;
 }
-.img-article .item-img{
-  width: 100%;
-  height: 100%;
-  background: #888;
+.image-article .item-image{
+  height: 200px;
 }
 .info-article{
   display: flex;
@@ -164,7 +179,9 @@ hr{
   font-weight: 900;
   line-height: 3rem;
 }
-
+.description{
+  padding: 20px;
+}
 
 .rat-section{
   display: flex;
